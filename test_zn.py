@@ -11,12 +11,12 @@ class TestZn(unittest.TestCase):
         self.z10 = Zn(10)
         self.z99 = Zn(99)
         self.z100 = Zn(100)
-        self.t2 = Zn.TableFormat(2)
-        self.t3 = Zn.TableFormat(3)
-        self.t9 = Zn.TableFormat(9)
-        self.t10 = Zn.TableFormat(10)
-        self.t99 = Zn.TableFormat(99)
-        self.t100 = Zn.TableFormat(100)
+        self.t2 = Zn.TableFormat(2, self.z2.add)
+        self.t3 = Zn.TableFormat(3, self.z3.add)
+        self.t9 = Zn.TableFormat(9, self.z9.add)
+        self.t10 = Zn.TableFormat(10, self.z10.add)
+        self.t99 = Zn.TableFormat(99, self.z99.add)
+        self.t100 = Zn.TableFormat(100, self.z100.add)
 
     def stub_test_str(self):
         result = self.z2.__str__()
@@ -72,5 +72,11 @@ class TestZn(unittest.TestCase):
     def test_add(self):
         self.assertEqual(self.z3.add(2, 1), 0)
         self.assertEqual(self.z3.add(2, 2), 1)
+        
+    def test_tableformat_op(self):
+        self.assertEqual(self.t3.op(2, 1), 0)
+        self.assertEqual(self.t3.op(2, 2), 1)
+
+        
 if __name__ == '__main__':
     unittest.main()
