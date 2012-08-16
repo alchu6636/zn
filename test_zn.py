@@ -36,16 +36,16 @@ class TestZn(unittest.TestCase):
         self.assertEqual(Zn.Cap(Zn.TableFormat(3)).data(), " 0/ 1/ 2".split("/"))
 
     def test_data_data(self):
-        self.assertEqual(Zn.Data(2, 1).data(), " 0/ 1".split("/"))
-        self.assertEqual(Zn.Data(3, 2).data(), " 0/ 2/ 1".split("/"))
+        self.assertEqual(Zn.Data(1, Zn.TableFormat(2)).data(), " 0/ 1".split("/"))
+        self.assertEqual(Zn.Data(2, Zn.TableFormat(3)).data(), " 0/ 2/ 1".split("/"))
 
     def test_cap(self):
         self.assertEqual(Zn.StringTable(2).cap(), " *| 0 1")
         self.assertEqual(Zn.StringTable(10).cap(), "  *|  0  1  2  3  4  5  6  7  8  9")
 
     def test_data(self):
-        self.assertEqual(Zn.Data(2, 1).output(), " 1/|/ 0/ 1".split("/"))
-        self.assertEqual(Zn.Data(3, 2).output(), " 2/|/ 0/ 2/ 1".split("/"))
+        self.assertEqual(Zn.Data(1, Zn.TableFormat(2)).output(), " 1/|/ 0/ 1".split("/"))
+        self.assertEqual(Zn.Data(2, Zn.TableFormat(3)).output(), " 2/|/ 0/ 2/ 1".split("/"))
 
     def test_sep(self):
         self.assertEqual(Zn.StringTable(2).sep(), "--+----")

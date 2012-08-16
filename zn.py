@@ -66,16 +66,15 @@ class Zn:
             return self._horizen()
             
     class Data(TableParts):
-        def __init__(self, char, row):
-            self._char = char
+        def __init__(self, row, tf):
             self._row = row
-            self._format = Zn.TableFormat(char)
+            self._format = tf
             
         def cap(self):
             return self.align(self._row)
         
         def cell(self, col):
-            return self.align(self._row * col % self._char)
+            return self.align(self._row * col % self._format._char)
            
     class StringTable(TableParts):
         def __init__(self, char):
@@ -91,7 +90,7 @@ class Zn:
             return "".join(ar)
 
         def cell(self, row):
-            ar = Zn.Data(self._char, row).output()
+            ar = Zn.Data(row, Zn.TableFormat(self._char)).output()
             return "".join(ar)
             
     def str_multi_table(self):
