@@ -25,9 +25,6 @@ class Zn:
         def op(self, x, y):
             return self._op(x, y)
         
-        def multi_op(self):
-            return "*"
-        
         def elements(self):
             return self._elements
                 
