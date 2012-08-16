@@ -11,12 +11,12 @@ class TestZn(unittest.TestCase):
         self.z10 = Zn(10)
         self.z99 = Zn(99)
         self.z100 = Zn(100)
-        self.t2 = Zn.TableFormat(2, self.z2.add)
-        self.t3 = Zn.TableFormat(3, self.z3.add)
-        self.t9 = Zn.TableFormat(9, self.z9.add)
-        self.t10 = Zn.TableFormat(10, self.z10.add)
-        self.t99 = Zn.TableFormat(99, self.z99.add)
-        self.t100 = Zn.TableFormat(100, self.z100.add)
+        self.t2 = Zn.TableFormat(2, self.z2.add, range(2))
+        self.t3 = Zn.TableFormat(3, self.z3.add, range(3))
+        self.t9 = Zn.TableFormat(9, self.z9.add, range(9))
+        self.t10 = Zn.TableFormat(10, self.z10.add, range(10))
+        self.t99 = Zn.TableFormat(99, self.z99.add, range(99))
+        self.t100 = Zn.TableFormat(100, self.z100.add, range(100))
 
     def stub_test_str(self):
         result = self.z2.__str__()
