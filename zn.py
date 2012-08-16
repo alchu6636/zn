@@ -19,7 +19,7 @@ class Zn:
             self._elements = elements
             self._symbol = symbol
             
-        def _col_width(self):
+        def col_width(self):
             return int(math.log(self._char, 10)) + 2
 
         def op(self, x, y):
@@ -30,7 +30,7 @@ class Zn:
                 
     class TableParts:
         def align(self, value):
-            form = "%" + str(self._format._col_width()) + "s"
+            form = "%" + str(self._format.col_width()) + "s"
             return form % value
             
         def sep(self):
@@ -57,7 +57,7 @@ class Zn:
             self._format = tf
             
         def _horizen(self):
-            return "-" * self._format._col_width()
+            return "-" * self._format.col_width()
 
         def cap(self):
             return self._horizen()
