@@ -20,7 +20,7 @@ class Zn:
             self.symbol = symbol
             
         def col_width(self):
-            return int(math.log(self._char, 10)) + 2
+            return int(math.log(self._char -1, 10)) + 2
 
         def op(self, x, y):
             return self._op(x, y)
