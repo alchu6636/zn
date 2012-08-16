@@ -78,19 +78,18 @@ class Zn:
            
     class StringTable(TableParts):
         def __init__(self, tf):
-            self._char = tf._char
             self._format = tf
         
         def cap(self):
-            ar = Zn.Cap(Zn.TableFormat(self._char)).output()
+            ar = Zn.Cap(self._format).output()
             return "".join(ar)
 
         def sep(self):
-            ar = Zn.Sep(Zn.TableFormat(self._char)).output()
+            ar = Zn.Sep(self._format).output()
             return "".join(ar)
 
         def cell(self, row):
-            ar = Zn.Data(row, Zn.TableFormat(self._char)).output()
+            ar = Zn.Data(row, self._format).output()
             return "".join(ar)
             
     def str_multi_table(self):
