@@ -50,8 +50,8 @@ class Zn:
             return self.align(col)
         
     class Sep(TableParts):
-        def __init__(self, char):
-            self._format = Zn.TableFormat(char)
+        def __init__(self, tf):
+            self._format = tf
             
         def _horizen(self):
             return "-" * self._format._col_width()
@@ -87,7 +87,7 @@ class Zn:
             return "".join(ar)
 
         def sep(self):
-            ar = Zn.Sep(self._char).output()
+            ar = Zn.Sep(Zn.TableFormat(self._char)).output()
             return "".join(ar)
 
         def cell(self, row):
