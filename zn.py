@@ -13,10 +13,11 @@ class Zn:
         return (x + y) % self._char
     
     class TableFormat:
-        def __init__(self, char, op, elements):
+        def __init__(self, char, op, elements, symbol):
             self._char = char
             self._op = op
             self._elements = elements
+            self._symbol = symbol
             
         def _col_width(self):
             return int(math.log(self._char, 10)) + 2
@@ -49,7 +50,7 @@ class Zn:
             self._format = tf
             
         def cap(self):
-            return self.align(self._format.multi_op())
+            return self.align(self._format._symbol)
 
         def cell(self, col):
             return self.align(col)
@@ -98,7 +99,7 @@ class Zn:
             return "".join(ar)
             
     def str_multi_table(self):
-        return Zn.StringTable(Zn.TableFormat(self._char, self.mul, range(self._char))).output()
+        return Zn.StringTable(Zn.TableFormat(self._char, self.mul, range(self._char), "*")).output()
 
 if __name__ == '__main__':
     print "\n".join(Zn(5).str_multi_table())

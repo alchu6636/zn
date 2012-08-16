@@ -11,12 +11,12 @@ class TestZn(unittest.TestCase):
         self.z10 = Zn(10)
         self.z99 = Zn(99)
         self.z100 = Zn(100)
-        self.t2 = Zn.TableFormat(2, self.z2.add, range(2))
-        self.t3 = Zn.TableFormat(3, self.z3.add, range(3))
-        self.t9 = Zn.TableFormat(9, self.z9.add, range(9))
-        self.t10 = Zn.TableFormat(10, self.z10.add, range(10))
-        self.t99 = Zn.TableFormat(99, self.z99.add, range(99))
-        self.t100 = Zn.TableFormat(100, self.z100.add, range(100))
+        self.t2 = Zn.TableFormat(2, self.z2.add, range(2), "+")
+        self.t3 = Zn.TableFormat(3, self.z3.add, range(3), "+")
+        self.t9 = Zn.TableFormat(9, self.z9.add, range(9), "+")
+        self.t10 = Zn.TableFormat(10, self.z10.add, range(10), "+")
+        self.t99 = Zn.TableFormat(99, self.z99.add, range(99), "+")
+        self.t100 = Zn.TableFormat(100, self.z100.add, range(100), "+")
 
     def stub_test_str(self):
         result = self.z2.__str__()
@@ -46,8 +46,8 @@ class TestZn(unittest.TestCase):
         self.assertEqual(Zn.Data(2, self.t3).data(), " 0/ 2/ 1".split("/"))
         
     def test_cap(self):
-        self.assertEqual(Zn.StringTable(self.t2).cap(), " *| 0 1")
-        self.assertEqual(Zn.StringTable(self.t10).cap(), "  *|  0  1  2  3  4  5  6  7  8  9")
+        self.assertEqual(Zn.StringTable(self.t2).cap(), " +| 0 1")
+        self.assertEqual(Zn.StringTable(self.t10).cap(), "  +|  0  1  2  3  4  5  6  7  8  9")
 
     def test_data(self):
         self.assertEqual(Zn.Data(1, self.t2).output(), " 1/|/ 0/ 1".split("/"))
