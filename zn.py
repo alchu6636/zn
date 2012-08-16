@@ -17,7 +17,7 @@ class Zn:
             self._char = char
             self._op = op
             self.elements = elements
-            self._symbol = symbol
+            self.symbol = symbol
             
         def col_width(self):
             return int(math.log(self._char, 10)) + 2
@@ -44,7 +44,7 @@ class Zn:
             self._format = tf
             
         def cap(self):
-            return self.align(self._format._symbol)
+            return self.align(self._format.symbol)
 
         def cell(self, col):
             return self.align(col)
