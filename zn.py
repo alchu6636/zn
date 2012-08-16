@@ -16,31 +16,25 @@ class Zn:
         def __init__(self, char, op, elements, symbol):
             self._char = char
             self._op = op
-            self._elements = elements
-            self._symbol = symbol
+            self.elements = elements
+            self.symbol = symbol
             
-        def _col_width(self):
+        def col_width(self):
             return int(math.log(self._char, 10)) + 2
 
         def op(self, x, y):
             return self._op(x, y)
         
-        def multi_op(self):
-            return "*"
-        
-        def elements(self):
-            return self._elements
-                
     class TableParts:
         def align(self, value):
-            form = "%" + str(self._format._col_width()) + "s"
+            form = "%" + str(self._format.col_width()) + "s"
             return form % value
             
         def sep(self):
             return "|"
         
         def data(self):
-            return map(self.cell, self._format.elements())
+            return map(self.cell, self._format.elements)
 
         def output(self):    
             return [ self.cap(), self.sep()] + self.data()
@@ -50,7 +44,7 @@ class Zn:
             self._format = tf
             
         def cap(self):
-            return self.align(self._format._symbol)
+            return self.align(self._format.symbol)
 
         def cell(self, col):
             return self.align(col)
@@ -60,7 +54,7 @@ class Zn:
             self._format = tf
             
         def _horizen(self):
-            return "-" * self._format._col_width()
+            return "-" * self._format.col_width()
 
         def cap(self):
             return self._horizen()

@@ -31,11 +31,11 @@ class TestZn(unittest.TestCase):
         self.assertRaises(ValueError, Zn, 1)
         
     def test_col_width(self):
-        self.assertEqual(self.t2._col_width(), 2)
-        self.assertEqual(self.t3._col_width(), 2)
-        self.assertEqual(self.t10._col_width(), 3)
-        self.assertEqual(self.t99._col_width(), 3)
-        self.assertEqual(self.t100._col_width(), 4)
+        self.assertEqual(self.t2.col_width(), 2)
+        self.assertEqual(self.t3.col_width(), 2)
+        self.assertEqual(self.t10.col_width(), 3)
+        self.assertEqual(self.t99.col_width(), 3)
+        self.assertEqual(self.t100.col_width(), 4)
 
     def test_cap_data(self):
         self.assertEqual(Zn.Cap(self.t2).data(), " 0/ 1".split("/"))
