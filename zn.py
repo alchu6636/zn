@@ -1,0 +1,97 @@
+import math
+
+class Zn:
+    def __init__(self, char):
+        if char < 2:
+            raise ValueError
+        self._char = char
+
+    class TableFormat:
+        def __init__(self, char):
+            self._char = char
+            
+        def _col_width(self):
+            return int(math.log(self._char, 10)) + 2
+
+        def multi_op(self):
+            return "*"
+        
+        def elements(self):
+            return range(self._char)
+                
+    class TableParts:
+        def align(self, value):
+            form = "%" + str(self._format._col_width()) + "s"
+            return form % value
+            
+        def sep(self):
+            return "|"
+        
+        def data(self):
+            return map(self.cell, self._format.elements())
+
+        def output(self):    
+            return [ self.cap(), self.sep()] + self.data()
+            
+    class Cap(TableParts):
+        def __init__(self, char):
+            self._format = Zn.TableFormat(char)
+            
+        def cap(self):
+            return self.align(self._format.multi_op())
+
+        def cell(self, col):
+            return self.align(col)
+        
+    class Sep(TableParts):
+        def __init__(self, char):
+            self._format = Zn.TableFormat(char)
+            
+        def _horizen(self):
+            return "-" * self._format._col_width()
+
+        def cap(self):
+            return self._horizen()
+        
+        def sep(self):
+            return "+"
+
+        def cell(self, stub):
+            return self._horizen()
+            
+    class Data(TableParts):
+        def __init__(self, char, row):
+            self._char = char
+            self._row = row
+            self._format = Zn.TableFormat(char)
+            
+        def cap(self):
+            return self.align(self._row)
+        
+        def cell(self, col):
+            return self.align(self._row * col % self._char)
+           
+    class StringTable(TableParts):
+        def __init__(self, char):
+            self._char = char
+            self._format = Zn.TableFormat(char)
+        
+        def cap(self):
+            ar = Zn.Cap(self._char).output()
+            return "".join(ar)
+
+        def sep(self):
+            ar = Zn.Sep(self._char).output()
+            return "".join(ar)
+
+        def cell(self, row):
+            ar = Zn.Data(self._char, row).output()
+            return "".join(ar)
+            
+    def str_multi_table(self):
+        return Zn.StringTable(self._char).output()
+
+if __name__ == '__main__':
+    print "\n".join(Zn(5).str_multi_table())
+    print "\n".join(Zn(11).str_multi_table())
+    print "\n".join(Zn(17).str_multi_table())
