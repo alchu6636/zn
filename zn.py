@@ -40,8 +40,8 @@ class Zn:
             return [ self.cap(), self.sep()] + self.data()
             
     class Cap(TableParts):
-        def __init__(self, char):
-            self._format = Zn.TableFormat(char)
+        def __init__(self, tf):
+            self._format = tf
             
         def cap(self):
             return self.align(self._format.multi_op())
@@ -83,7 +83,7 @@ class Zn:
             self._format = Zn.TableFormat(char)
         
         def cap(self):
-            ar = Zn.Cap(self._char).output()
+            ar = Zn.Cap(Zn.TableFormat(self._char)).output()
             return "".join(ar)
 
         def sep(self):

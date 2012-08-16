@@ -32,8 +32,8 @@ class TestZn(unittest.TestCase):
         self.assertEqual(Zn.TableFormat(100)._col_width(), 4)
 
     def test_cap_data(self):
-        self.assertEqual(Zn.Cap(2).data(), " 0/ 1".split("/"))
-        self.assertEqual(Zn.Cap(3).data(), " 0/ 1/ 2".split("/"))
+        self.assertEqual(Zn.Cap(Zn.TableFormat(2)).data(), " 0/ 1".split("/"))
+        self.assertEqual(Zn.Cap(Zn.TableFormat(3)).data(), " 0/ 1/ 2".split("/"))
 
     def test_data_data(self):
         self.assertEqual(Zn.Data(2, 1).data(), " 0/ 1".split("/"))
