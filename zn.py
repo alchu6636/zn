@@ -77,9 +77,9 @@ class Zn:
             return self.align(self._row * col % self._format._char)
            
     class StringTable(TableParts):
-        def __init__(self, char):
-            self._char = char
-            self._format = Zn.TableFormat(char)
+        def __init__(self, tf):
+            self._char = tf._char
+            self._format = tf
         
         def cap(self):
             ar = Zn.Cap(Zn.TableFormat(self._char)).output()
@@ -94,7 +94,7 @@ class Zn:
             return "".join(ar)
             
     def str_multi_table(self):
-        return Zn.StringTable(self._char).output()
+        return Zn.StringTable(Zn.TableFormat(self._char)).output()
 
 if __name__ == '__main__':
     print "\n".join(Zn(5).str_multi_table())
