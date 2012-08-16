@@ -16,7 +16,7 @@ class Zn:
         def __init__(self, char, op, elements, symbol):
             self._char = char
             self._op = op
-            self._elements = elements
+            self.elements = elements
             self._symbol = symbol
             
         def col_width(self):
@@ -25,9 +25,6 @@ class Zn:
         def op(self, x, y):
             return self._op(x, y)
         
-        def elements(self):
-            return self._elements
-                
     class TableParts:
         def align(self, value):
             form = "%" + str(self._format.col_width()) + "s"
@@ -37,7 +34,7 @@ class Zn:
             return "|"
         
         def data(self):
-            return map(self.cell, self._format.elements())
+            return map(self.cell, self._format.elements)
 
         def output(self):    
             return [ self.cap(), self.sep()] + self.data()
