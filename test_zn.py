@@ -58,8 +58,13 @@ class TestZn(unittest.TestCase):
  0| 0 0
  1| 0 1""".split("\n"))
         
+    def test_mul(self):
+        self.assertEqual(self.z3.mul(2, 1), 2)
+        self.assertEqual(self.z3.mul(2, 2), 1)
+        self.assertEqual(self.z3.mul(2, 3), 0)
 
-        
-        
+    def test_add(self):
+        self.assertEqual(self.z3.add(2, 1), 0)
+        self.assertEqual(self.z3.add(2, 2), 1)
 if __name__ == '__main__':
     unittest.main()

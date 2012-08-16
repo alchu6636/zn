@@ -6,6 +6,12 @@ class Zn:
             raise ValueError
         self._char = char
 
+    def mul(self, x, y):
+        return x * y % self._char
+    
+    def add(self, x, y):
+        return (x + y) % self._char
+    
     class TableFormat:
         def __init__(self, char):
             self._char = char
