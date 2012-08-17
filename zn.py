@@ -111,6 +111,4 @@ class Zn:
         
         
 if __name__ == '__main__':
-    print "\n".join(Zn(5).str_multi_table())
-    print "\n".join(Zn(11).str_multi_table())
-    print "\n".join(Zn(17).str_multi_table())
+    print Zn(3)
