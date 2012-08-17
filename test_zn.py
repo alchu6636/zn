@@ -42,8 +42,8 @@ class TestZn(unittest.TestCase):
         self.assertEqual(Zn.Cap(self.t3).data(), " 0/ 1/ 2".split("/"))
 
     def test_data_data(self):
-        self.assertEqual(Zn.Data(1, self.t2).data(), " 0/ 1".split("/"))
-        self.assertEqual(Zn.Data(2, self.t3).data(), " 0/ 2/ 1".split("/"))
+        self.assertEqual(Zn.Data(1, self.t2).data(), " 1/ 0".split("/"))
+        self.assertEqual(Zn.Data(2, self.t3).data(), " 2/ 0/ 1".split("/"))
         
     def test_cap(self):
         self.assertEqual(Zn.StringTable(self.t2).cap(), " +| 0 1")
@@ -51,8 +51,8 @@ class TestZn(unittest.TestCase):
         self.assertEqual(Zn.StringTable(self.t11).cap(), "  +|  0  1  2  3  4  5  6  7  8  9 10")
 
     def test_data(self):
-        self.assertEqual(Zn.Data(1, self.t2).output(), " 1/|/ 0/ 1".split("/"))
-        self.assertEqual(Zn.Data(2, self.t3).output(), " 2/|/ 0/ 2/ 1".split("/"))
+        self.assertEqual(Zn.Data(1, self.t2).output(), " 1/|/ 1/ 0".split("/"))
+        self.assertEqual(Zn.Data(2, self.t3).output(), " 2/|/ 2/ 0/ 1".split("/"))
 
     def test_sep(self):
         self.assertEqual(Zn.StringTable(self.t2).sep(), "--+----")
@@ -70,6 +70,21 @@ class TestZn(unittest.TestCase):
 --+----
  1| 1 2
  2| 2 1""".split("\n"))
+        
+    def test_str_add2(self):
+        self.assertEqual(self.z2.str_add_table(), \
+""" +| 0 1
+--+----
+ 0| 0 1
+ 1| 1 0""".split("\n"))
+
+    def test_str_add3(self):
+        self.assertEqual(self.z3.str_add_table(), \
+""" +| 0 1 2
+--+------
+ 0| 0 1 2
+ 1| 1 2 0
+ 2| 2 0 1""".split("\n"))
         
     def test_mul(self):
         self.assertEqual(self.z3.mul(2, 1), 2)
