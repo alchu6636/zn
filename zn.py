@@ -98,6 +98,18 @@ class Zn:
     def str_add_table(self):
         return Zn.StringTable(Zn.TableFormat(self._char, self.add, range(0, self._char), "+")).output()
 
+    def name(self):
+        return "Z" + str(self._char)
+    
+    def __str__(self):
+        add = self.str_add_table()
+        mul = self.str_multi_table()+[""]
+        spc = [" "] * len(add)
+        ar = zip(add, spc, mul)
+        ar2 = map("".join, ar)
+        return "\n".join([self.name()]+ar2)
+        
+        
 if __name__ == '__main__':
     print "\n".join(Zn(5).str_multi_table())
     print "\n".join(Zn(11).str_multi_table())

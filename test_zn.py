@@ -18,13 +18,13 @@ class TestZn(unittest.TestCase):
         self.t100 = Zn.TableFormat(100, self.z100.add, range(100), "+")
         self.t101 = Zn.TableFormat(101, self.z101.add, range(101), "+")
 
-    def stub_test_str(self):
+    def test_z2_str(self):
         result = self.z2.__str__()
         self.assertEqual(result, """Z2
- +| 0 1  *| 0 1
---+---- --+----
- 0| 0 1  0| 0 0
- 1| 1 0  1| 0 1""")
+ +| 0 1  *| 1
+--+---- --+--
+ 0| 0 1  1| 1
+ 1| 1 0 """)
 
     def test_init_error(self):
         Zn(2)
