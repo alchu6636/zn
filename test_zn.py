@@ -7,18 +7,14 @@ class TestZn(unittest.TestCase):
     def setUp(self):
         self.z2 = Zn(2)
         self.z3 = Zn(3)
-        self.z9 = Zn(9)
         self.z10 = Zn(10)
         self.z11 = Zn(11)
-        self.z99 = Zn(99)
         self.z100 = Zn(100)
         self.z101 = Zn(101)
         self.t2 = Zn.TableFormat(2, self.z2.add, range(2), "+")
         self.t3 = Zn.TableFormat(3, self.z3.add, range(3), "+")
-        self.t9 = Zn.TableFormat(9, self.z9.add, range(9), "+")
         self.t10 = Zn.TableFormat(10, self.z10.add, range(10), "+")
         self.t11 = Zn.TableFormat(11, self.z11.add, range(11), "+")
-        self.t99 = Zn.TableFormat(99, self.z99.add, range(99), "+")
         self.t100 = Zn.TableFormat(100, self.z100.add, range(100), "+")
         self.t101 = Zn.TableFormat(101, self.z101.add, range(101), "+")
 
@@ -36,10 +32,8 @@ class TestZn(unittest.TestCase):
         
     def test_col_width(self):
         self.assertEqual(self.t2.col_width(), 2)
-        self.assertEqual(self.t3.col_width(), 2)
         self.assertEqual(self.t10.col_width(), 2)
         self.assertEqual(self.t11.col_width(), 3)
-        self.assertEqual(self.t99.col_width(), 3)
         self.assertEqual(self.t100.col_width(), 3)
         self.assertEqual(self.t101.col_width(), 4)
 
