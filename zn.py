@@ -93,7 +93,7 @@ class Zn:
             return "".join(ar)
             
     def str_multi_table(self):
-        return Zn.StringTable(Zn.TableFormat(self._char, self.mul, range(self._char), "*")).output()
+        return Zn.StringTable(Zn.TableFormat(self._char, self.mul, range(1, self._char), "*")).output()
 
 if __name__ == '__main__':
     print "\n".join(Zn(5).str_multi_table())

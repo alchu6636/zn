@@ -60,10 +60,16 @@ class TestZn(unittest.TestCase):
 
     def test_str_multi2(self):
         self.assertEqual(self.z2.str_multi_table(), \
-""" *| 0 1
+""" *| 1
+--+--
+ 1| 1""".split("\n"))
+        
+    def test_str_multi3(self):
+        self.assertEqual(self.z3.str_multi_table(), \
+""" *| 1 2
 --+----
- 0| 0 0
- 1| 0 1""".split("\n"))
+ 1| 1 2
+ 2| 2 1""".split("\n"))
         
     def test_mul(self):
         self.assertEqual(self.z3.mul(2, 1), 2)
